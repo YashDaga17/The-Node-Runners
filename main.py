@@ -5,6 +5,7 @@ import requests
 import os
 from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
 
 app = FastAPI(title="Job Search API")
@@ -19,6 +20,14 @@ app.add_middleware(
 
 CRUSTDATA_API_KEY = os.getenv("CRUSTDATA_API_KEY")
 CRUSTDATA_URL = "https://api.crustdata.com/screener/web-search"
+
+# Debug: Print API key status (without exposing the key)
+print(f"API Key loaded: {'Yes' if CRUSTDATA_API_KEY else 'No'}")
+if CRUSTDATA_API_KEY:
+    print(f"API Key length: {len(CRUSTDATA_API_KEY)}")
+    print(f"API Key starts with: {CRUSTDATA_API_KEY[:8]}...")
+else:
+    print("❌ CRUSTDATA_API_KEY not found in environment")
 
 
 class JobSearchRequest(BaseModel):
@@ -64,6 +73,12 @@ async def search_jobs(request: JobSearchRequest):
             params=params,
             timeout=60
         )
+        
+        # Log the response for debugging
+        print(f"Response status: {resp.status_code}")
+        print(f"Response headers: {dict(resp.headers)}")
+        print(f"Response text: {resp.text[:500]}")
+        
         resp.raise_for_status()
         data = resp.json()
         

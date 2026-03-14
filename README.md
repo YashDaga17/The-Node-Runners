@@ -41,25 +41,19 @@ Server runs at `http://localhost:8000`
 ### Search for jobs
 
 ```bash
-curl -X POST http://localhost:8000/api/search-jobs \
-  -H "Content-Type: application/json" \
-  -d '{
-    "role": "software engineer",
-    "location": "US",
-    "fetch_content": false
-  }'
+curl -X POST http://localhost:8000/api/search-jobs -H "Content-Type: application/json" -d '{"role": "software engineer", "location": "US", "fetch_content": false}'
 ```
 
 ### With full content
 
 ```bash
-curl -X POST http://localhost:8000/api/search-jobs \
-  -H "Content-Type: application/json" \
-  -d '{
-    "role": "data scientist",
-    "location": "GB",
-    "fetch_content": true
-  }'
+curl -X POST http://localhost:8000/api/search-jobs -H "Content-Type: application/json" -d '{"role": "data scientist", "location": "GB", "fetch_content": true}'
+```
+
+### Test with Python script
+
+```bash
+uv run python test_api.py
 ```
 
 ## API Docs

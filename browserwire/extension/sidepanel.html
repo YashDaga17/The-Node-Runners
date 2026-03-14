@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>BrowserWire</title>
+  <link rel="stylesheet" href="sidepanel.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Browser<span>Wire</span></h1>
+      <div id="status" class="status-badge disconnected">Disconnected</div>
+    </header>
+
+    <div class="main-content">
+      <div class="card">
+        <p class="description">Turn this website into a typed REST API for your agents.</p>
+        <button id="toggleDiscovery" class="btn btn-primary">Start Exploring</button>
+      </div>
+
+      <div id="discoveryInfo" class="card hidden">
+        <h3>Live Discovery</h3>
+        <p>Navigate the site. We're watching for actions and entities.</p>
+        <div class="pulse-container">
+          <div class="pulse"></div>
+          <span>Perceiving...</span>
+        </div>
+      </div>
+
+      <div id="siteManifest" class="card hidden">
+        <h3>API Manifest</h3>
+        <pre id="manifestContent"></pre>
+      </div>
+    </div>
+
+    <footer>
+      <p>Server: <span id="serverUrl">http://localhost:8787</span></p>
+    </footer>
+  </div>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

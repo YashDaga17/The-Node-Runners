@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .search-form { background: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .job-card { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 8px; }
+        .job-title { color: #2563eb; font-weight: bold; margin-bottom: 5px; }
+        .job-domain { color: #059669; font-size: 0.9em; }
+        .job-snippet { margin: 10px 0; line-height: 1.5; }
+        .loading { text-align: center; color: #666; }
+        input, select, button { padding: 8px; margin: 5px; border: 1px solid #ddd; border-radius: 4px; }
+        button { background: #2563eb; color: white; cursor: pointer; }
+        button:hover { background: #1d4ed8; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Job Search</h1>
+    
+    <div class="search-form">
+        <input type="text" id="role" placeholder="Job role (e.g., software engineer, product manager, data scientist)" value="frontend developer">
+        <select id="location">
+            <option value="US">United States</option>
+            <option value="GB">United Kingdom</option>
+            <option value="CA">Canada</option>
+            <option value="DE">Germany</option>
+        </select>
+        <button onclick="searchJobs()">Search Jobs</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+        async function searchJobs() {
+            const role = document.getElementById('role').value;
+            const location = document.getElementById('location').value;
+            const resultsDiv = document.getElementById('results');
+            
+            if (!role.trim()) {
+                alert('Please enter a job role');
+                return;
+            }
+            
+            resultsDiv.innerHTML = '<div class="loading">🔍 Searching for jobs...</div>';
+            
+            try {
+                const response = await fetch('http://localhost:8001/api/search-jobs', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        role: role,
+                        location: location,
+                        fetch_content: false
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                displayJobs(data);
+                
+            } catch (error) {
+                resultsDiv.innerHTML = `<div style="color: red;">❌ Error: ${error.message}</div>`;
+            }
+        }
+        
+        function displayJobs(data) {
+            const resultsDiv = document.getElementById('results');
+            
+            if (data.total_results === 0) {
+                resultsDiv.innerHTML = '<div>No jobs found. Try a different search term.</div>';
+                return;
+            }
+            
+            let html = `<h2>Found ${data.total_results} jobs for "${data.query}"</h2>`;
+            
+            data.jobs.forEach(job => {
+                html += `
+                    <div class="job-card">
+                        <div class="job-title">
+                            <a href="${job.url}" target="_blank">${job.title}</a>
+                        </div>
+                        <div class="job-domain">${job.domain}</div>
+                        <div class="job-snippet">${job.snippet}</div>
+                    </div>
+                `;
+            });
+            
+            resultsDiv.innerHTML = html;
+        }
+        
+        // Allow Enter key to search
+        document.getElementById('role').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchJobs();
+            }
+        });
+    </script>
+</body>
+</html>

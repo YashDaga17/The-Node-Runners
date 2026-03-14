@@ -1,0 +1,24 @@
+{
+  "query": "software engineer job openings hiring",
+  "total_results": 15,
+  "jobs": [
+    {
+      "title": "Senior Software Engineer - Full Stack",
+      "url": "https://jobs.lever.co/company/senior-software-engineer",
+      "snippet": "We're seeking a Senior Software Engineer to join our growing team. You'll work on cutting-edge technology, building scalable web applications...",
+      "domain": "lever.co"
+    },
+    {
+      "title": "Software Engineer II - Backend Systems",
+      "url": "https://careers.google.com/jobs/results/123456789",
+      "snippet": "Join Google's engineering team working on distributed systems. Requirements: 3+ years experience, Python/Go expertise...",
+      "domain": "careers.google.com"
+    },
+    {
+      "title": "Remote Software Engineer - React/Node.js",
+      "url": "https://angel.co/company/startup/jobs/987654321",
+      "snippet": "100% remote position for a full-stack engineer. Work with modern tech stack: React, Node.js, PostgreSQL. Competitive salary...",
+      "domain": "angel.co"
+    }
+  ]
+}
