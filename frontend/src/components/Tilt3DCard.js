@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tilt } from 'react-parallax-tilt';
+import Tilt from 'react-parallax-tilt';
 import { motion } from 'framer-motion';
 
 const Tilt3DCard = ({ children, className = '', scale = 1.05, tiltMaxAngleX = 15, tiltMaxAngleY = 15, glareEnable = true, ...props }) => {
