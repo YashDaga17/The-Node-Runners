@@ -126,18 +126,18 @@ code {
     animation: float 3s ease-in-out infinite;
 }
 
-/* Pulse Glow Animation */
+/* Pulse Glow Animation - Subtle */
 @keyframes pulseGlow {
     0%, 100% {
-        box-shadow: 0 0 20px rgba(103, 232, 249, 0.3);
+        box-shadow: 0 0 10px rgba(103, 232, 249, 0.2);
     }
     50% {
-        box-shadow: 0 0 30px rgba(103, 232, 249, 0.6), 0 0 60px rgba(103, 232, 249, 0.3);
+        box-shadow: 0 0 15px rgba(103, 232, 249, 0.3);
     }
 }
 
 .pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite;
+    animation: pulseGlow 3s ease-in-out infinite;
 }
 
 /* Shimmer Effect */
