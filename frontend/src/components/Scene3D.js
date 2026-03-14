@@ -1,48 +1,66 @@
-import React, { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Sphere, MeshDistortMaterial, OrbitControls } from '@react-three/drei';
-import * as THREE from 'three';
-
-function FloatingShape({ position, color, speed = 1 }) {
-  const meshRef = useRef();
-  
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.elapsedTime * speed * 0.3;
-      meshRef.current.rotation.y = state.clock.elapsedTime * speed * 0.2;
-    }
-  });
-
-  return (
-    <Float speed={speed} rotationIntensity={0.5} floatIntensity={0.5}>
-      <Sphere ref={meshRef} args={[1, 64, 64]} position={position}>
-        <MeshDistortMaterial
-          color={color}
-          attach="material"
-          distort={0.4}
-          speed={2}
-          roughness={0.2}
-          metalness={0.8}
-        />
-      </Sphere>
-    </Float>
-  );
-}
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const Scene3D = () => {
   return (
-    <div className="absolute inset-0 -z-10 opacity-30">
-      <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[10, 10, 5]} intensity={1} />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} color="#67e8f9" />
-        
-        <FloatingShape position={[-3, 2, 0]} color="#67e8f9" speed={0.8} />
-        <FloatingShape position={[3, -2, -2]} color="#8b5cf6" speed={1.2} />
-        <FloatingShape position={[0, 0, -3]} color="#3b82f6" speed={1} />
-        
-        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
-      </Canvas>
+    <div className="absolute inset-0 -z-10 opacity-20 overflow-hidden">
+      <motion.div
+        className="absolute w-96 h-96 rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgba(103,232,249,0.3) 0%, transparent 70%)',
+          filter: 'blur(60px)',
+          top: '10%',
+          left: '10%',
+        }}
+        animate={{
+          x: [0, 100, 0],
+          y: [0, 50, 0],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
+      <motion.div
+        className="absolute w-80 h-80 rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgba(139,92,246,0.3) 0%, transparent 70%)',
+          filter: 'blur(60px)',
+          top: '50%',
+          right: '15%',
+        }}
+        animate={{
+          x: [0, -80, 0],
+          y: [0, 80, 0],
+          scale: [1, 1.3, 1],
+        }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
+      <motion.div
+        className="absolute w-72 h-72 rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgba(59,130,246,0.3) 0%, transparent 70%)',
+          filter: 'blur(60px)',
+          bottom: '15%',
+          left: '50%',
+        }}
+        animate={{
+          x: [0, 60, 0],
+          y: [0, -60, 0],
+          scale: [1, 1.15, 1],
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
     </div>
   );
 };
