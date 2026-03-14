@@ -103,22 +103,22 @@ const DashboardLayout = () => {
             </nav>
 
             {/* User Profile */}
-            <div className="p-4 border-t border-slate-200">
-              <div className="flex items-center gap-3 mb-3">
-                <Avatar>
-                  <AvatarFallback className="bg-indigo-100 text-indigo-600 font-semibold">
+            <div className="p-4 border-t border-white/10">
+              <div className="flex items-center gap-3 mb-3 glass-card p-3 rounded-xl">
+                <Avatar className="border-2 border-cyan-500/30">
+                  <AvatarFallback className="bg-gradient-to-br from-cyan-500 to-blue-600 text-white font-semibold">
                     {user?.name?.charAt(0).toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
                 <div className="flex-1 min-w-0">
-                  <p className="font-medium text-sm text-slate-900 truncate">{user?.name}</p>
+                  <p className="font-medium text-sm text-white truncate">{user?.name}</p>
                   <p className="text-xs text-slate-500 truncate">{user?.email}</p>
                 </div>
               </div>
               <Button
                 variant="outline"
                 onClick={logout}
-                className="w-full justify-start gap-2"
+                className="w-full justify-start gap-2 bg-white/5 border-white/10 text-slate-400 hover:bg-red-500/20 hover:text-red-400 hover:border-red-500/30 transition-all"
                 data-testid="logout-button"
               >
                 <LogOut className="w-4 h-4" />
