@@ -1,0 +1,146 @@
+{
+  "identity": {
+    "persona": "E1",
+    "role": "Creative Designer (Top 1%)",
+    "mission": "Create a 'Gamified Professional' dashboard that makes job hunting feel empowering, not exhausting.",
+    "principles": [
+      "Fusion over Imitation: Mix productivity tools with arcade aesthetics.",
+      "Emotion First: Every interaction should feel rewarding (e.g., applying for a job = XP gain).",
+      "Content is King: Data must be scannable but beautiful.",
+      "Negative Space: Don't clutter; let the metrics breathe.",
+      "Contrast: Use vibrant accents against clean backgrounds to guide attention."
+    ]
+  },
+  "theme": {
+    "name": "Vibrant Play / Modern Tech",
+    "mode": "light",
+    "emotional_tone": "Optimistic, Organized, Kinetic",
+    "visual_style": "Clean surfaces, colorful data, soft shadows, 1px borders"
+  },
+  "colors": {
+    "palette": {
+      "primary": {
+        "name": "Electric Indigo",
+        "hex": "#6366F1",
+        "tailwind": "indigo-500"
+      },
+      "secondary": {
+        "name": "Soft Violet",
+        "hex": "#8B5CF6",
+        "tailwind": "violet-500"
+      },
+      "background": {
+        "light": "#FAFAFA",
+        "dark": "#0F172A",
+        "paper": "#FFFFFF"
+      },
+      "text": {
+        "primary": "#1E293B",
+        "secondary": "#64748B",
+        "muted": "#94A3B8"
+      },
+      "accents": {
+        "success": "#10B981",
+        "warning": "#F59E0B",
+        "error": "#F43F5E",
+        "info": "#3B82F6"
+      }
+    },
+    "gradients": {
+      "primary": "bg-gradient-to-r from-indigo-500 to-violet-500",
+      "success": "bg-gradient-to-r from-emerald-400 to-cyan-500",
+      "subtle": "bg-gradient-to-b from-white to-slate-50"
+    }
+  },
+  "typography": {
+    "headings": {
+      "font_family": "Outfit, sans-serif",
+      "weights": ["500", "600", "700"],
+      "usage": "All section titles, card headers, and big metrics."
+    },
+    "body": {
+      "font_family": "Inter, sans-serif",
+      "weights": ["400", "500"],
+      "usage": "Paragraphs, table data, labels."
+    },
+    "mono": {
+      "font_family": "JetBrains Mono, monospace",
+      "usage": "Code snippets, JSON data viewer, ID tags."
+    }
+  },
+  "layout": {
+    "spacing_scale": "Generous (2x standard)",
+    "container_padding": "p-6 md:p-8 lg:p-12",
+    "grid_system": {
+      "dashboard": "Bento Grid (Asymmetric)",
+      "list_view": "High Density Table"
+    },
+    "border_radius": {
+      "card": "rounded-xl",
+      "button": "rounded-full",
+      "input": "rounded-lg"
+    }
+  },
+  "components": {
+    "strategy": "Hybrid: Custom HTML/Tailwind for layout, Shadcn for interactions.",
+    "cards": {
+      "style": "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-200",
+      "padding": "p-6"
+    },
+    "buttons": {
+      "primary": "bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-500/30 transition-transform active:scale-95",
+      "secondary": "bg-white text-slate-700 border border-slate-200 hover:bg-slate-50",
+      "ghost": "hover:bg-slate-100 text-slate-600"
+    },
+    "inputs": {
+      "style": "bg-slate-50 border-slate-200 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+    },
+    "charts": {
+      "library": "recharts",
+      "style": "Minimalist, colorful, with custom tooltips."
+    }
+  },
+  "assets": {
+    "icons": "lucide-react",
+    "images": {
+      "user_avatar": "https://images.unsplash.com/photo-1576558656222-ba66febe3dec?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "company_logos": [
+        "https://images.unsplash.com/photo-1638528785527-97bbe39cb139?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "https://images.unsplash.com/photo-1515968004492-e6224002d7db?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "https://images.unsplash.com/photo-1770012977129-19f856a1f935?crop=entropy&cs=srgb&fm=jpg&q=85"
+      ],
+      "placeholders": {
+        "resume_preview": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80",
+        "empty_state": "https://images.unsplash.com/photo-1623039405147-947799872665?auto=format&fit=crop&q=80"
+      }
+    }
+  },
+  "motion": {
+    "library": "framer-motion",
+    "guidelines": [
+      "Use layoutId for smooth transitions between tabs.",
+      "Stagger children animations for lists.",
+      "Micro-interactions on all buttons (scale, brightness).",
+      "Page transitions: Fade + slight Y-axis movement."
+    ]
+  },
+  "instructions_to_main_agent": [
+    "1. INSTALLATION: Ensure 'lucide-react', 'recharts', 'framer-motion', 'clsx', 'tailwind-merge' are installed.",
+    "2. FONTS: Import 'Outfit' and 'Inter' from Google Fonts in index.css.",
+    "3. THEME: Implement a 'ThemeProvider' to handle light/dark mode, defaulting to light.",
+    "4. LAYOUT: Use a Sidebar Layout for the main dashboard. Sidebar should be collapsible on mobile.",
+    "5. RESUME PARSER: Create a dedicated 'drag-and-drop' zone with visual feedback (border color change on drag).",
+    "6. JSON VIEWER: Use a syntax highlighter or a custom tree view for the parsed resume JSON. Do not just dump text.",
+    "7. JOB TRACKER: Use a Kanban board OR a detailed Data Table with status badges (Applied, Interview, Offer, Rejected).",
+    "8. ANALYTICS: Create a 'Stats Overview' with 4 cards: Total Applied, Interviews, Offers, Rejections. Use sparklines if possible.",
+    "9. ACCESSIBILITY: Ensure all inputs have labels, colors meet contrast ratios (APCA), and interactive elements are keyboard navigable.",
+    "10. TESTING: Add 'data-testid' to all interactive elements."
+  ],
+  "universal_guidelines": [
+    "Avoid 'AI Slop': No generic gradients, no centered text blocks without purpose.",
+    "Depth: Use z-index and shadows to create hierarchy.",
+    "Glassmorphism: Use 'backdrop-blur-md' and 'bg-white/80' for sticky headers and overlays.",
+    "No 'transition: all'. Animate specific properties.",
+    "Use 'sonner' for toast notifications."
+  ]
+}
