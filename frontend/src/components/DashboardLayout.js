@@ -75,7 +75,7 @@ const DashboardLayout = () => {
             initial={{ x: -300 }}
             animate={{ x: 0 }}
             exit={{ x: -300 }}
-            className="fixed left-0 top-0 bottom-0 w-64 bg-white border-r border-slate-200 z-50 lg:z-30 flex flex-col"
+            className="fixed left-0 top-0 bottom-0 w-64 glass-card-premium sidebar-glow z-50 lg:z-30 flex flex-col"
           >
             {/* Logo */}
             <div className="p-6 border-b border-slate-200">
