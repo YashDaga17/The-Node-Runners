@@ -68,17 +68,19 @@ const DashboardPage = () => {
         <div>
           <motion.h1 className="text-5xl font-bold mb-3 flex items-center gap-3">
             <span className="neon-text-cyan">Dashboard</span>
-            <motion.div animate={{ rotate: [0, 360], scale: [1, 1.2, 1] }} transition={{ duration: 3, repeat: Infinity }}>
-              <Sparkles className="w-8 h-8 text-amber-400" />
+            <motion.div animate={{ rotate: [0, 360], scale: [1, 1.15, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
+              <Sparkles className="w-8 h-8 text-cyan-400" />
             </motion.div>
           </motion.h1>
-          <p className="text-slate-400 text-lg">Overview of your job application journey</p>
+          <p className="text-slate-400 text-lg">Track your journey to success</p>
         </div>
-        <motion.div whileHover={{ scale: 1.05 }} className="glass-card-premium px-6 py-3 rounded-full">
+        <motion.div 
+          whileHover={{ scale: 1.05, y: -2 }} 
+          className="glass-card-premium px-6 py-3 rounded-full backdrop-blur-md border border-cyan-500/20">
           <div className="flex items-center gap-2">
             <Target className="w-5 h-5 text-cyan-400" />
-            <AnimatedCounter value={stats?.total_applications || 0} className="text-cyan-400 font-semibold" />
-            <span className="text-cyan-400 font-semibold">Applications</span>
+            <AnimatedCounter value={stats?.total_applications || 0} className="text-cyan-400 font-semibold text-lg" />
+            <span className="text-slate-300 font-medium">Applications</span>
           </div>
         </motion.div>
       </motion.div>
