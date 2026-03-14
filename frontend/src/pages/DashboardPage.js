@@ -6,7 +6,7 @@ import { Briefcase, Users, CheckCircle, Loader2, Sparkles, Zap, Target, Rocket, 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, AreaChart, Area } from 'recharts';
 import Tilt3DCard from '../components/Tilt3DCard';
 import AnimatedCounter from '../components/AnimatedCounter';
-import ParticlesBackground from '../components/ParticlesBackground';
+import Scene3D from '../components/Scene3D';
 
 const DashboardPage = () => {
   const { API } = useContext(AuthContext);
