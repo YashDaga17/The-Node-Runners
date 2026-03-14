@@ -31,8 +31,8 @@ const DashboardPage = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <motion.div animate={{ rotate: 360, scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }}>
-          <Loader2 className="w-12 h-12 text-cyan-400 loader-premium" />
+        <motion.div animate={{ rotate: 360, scale: [1, 1.1, 1] }} transition={{ duration: 2, repeat: Infinity }}>
+          <Loader2 className="w-12 h-12 text-cyan-400" />
         </motion.div>
       </div>
     );
