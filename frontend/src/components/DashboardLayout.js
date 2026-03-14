@@ -78,13 +78,17 @@ const DashboardLayout = () => {
             className="fixed left-0 top-0 bottom-0 w-64 glass-card-premium sidebar-glow z-50 lg:z-30 flex flex-col"
           >
             {/* Logo */}
-            <div className="p-6 border-b border-slate-200">
+            <div className="p-6 border-b border-white/10">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                <motion.div
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                  className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center glow-cyan"
+                >
                   <Briefcase className="w-6 h-6 text-white" />
-                </div>
+                </motion.div>
                 <div>
-                  <h1 className="font-bold text-xl text-slate-900">Job Hunt Hub</h1>
+                  <h1 className="font-bold text-xl neon-text-cyan">Job Hunt Hub</h1>
                   <p className="text-xs text-slate-500">Track your journey</p>
                 </div>
               </div>
