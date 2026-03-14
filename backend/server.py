@@ -143,11 +143,13 @@ def extract_text_from_pdf(file_content: bytes) -> str:
         pdf_reader = PdfReader(pdf_file)
         text = ""
         for page in pdf_reader.pages:
-            text += page.extract_text()
-        return text
+            extracted = page.extract_text()
+            if extracted:
+                text += extracted + "\n"
+        return text.strip()
     except Exception as e:
         logger.error(f"Error extracting PDF text: {e}")
-        return ""
+        raise Exception(f"PDF extraction failed: {str(e)}")
 
 def extract_text_from_docx(file_content: bytes) -> str:
     try:
